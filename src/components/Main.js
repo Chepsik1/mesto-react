@@ -27,16 +27,22 @@ function Main(props) {
         .getCards(cards)
 
         .then((response) => {
+          
           const cards = response.map((item) => {
+            
             return {
+              
+              key:item._id,
               id: item._id,
               src: item.link,
               title: item.name,
               likes: item.likes.length,
             };
+            
           });
 
           setCards(cards);
+          
         })
 
         .catch((error) => {
@@ -58,7 +64,7 @@ function Main(props) {
               type="button"
               className="profile__addit-button"
               onClick={props.onEditProfile}
-            ></button>
+            />
           </div>
           <p className="profile__occupation">{userDescription}</p>
         </div>
@@ -66,12 +72,14 @@ function Main(props) {
           type="button"
           className="profile__add-button"
           onClick={props.onAddPlace}
-        ></button>
+        />
       </section>
       <section className="elements">
         {cards.map((item) => (
-          <Card key={item.id} {...item} onCardClick={props.onCardClick} />
+          <Card  {...item} onCardClick={props.onCardClick} />
+          
         ))}
+      
       </section>
 
       <div className="popup-del popup">
@@ -88,7 +96,7 @@ function Main(props) {
         <button
           type="button"
           className=" popup__close popup-del__close"
-        ></button>
+        />
       </div>
     </main>
   );

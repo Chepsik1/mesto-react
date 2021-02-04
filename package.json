@@ -1,5 +1,7 @@
 {
+  "homepage": "https://chepsik1.github.io/mesto-react/",
   "name": "mesto-react",
+  "author":"Pronchenok Vitaliy",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
