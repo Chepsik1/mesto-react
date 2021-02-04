@@ -13,8 +13,9 @@ function ImagePopup(props) {
           className="popup-image__foto"
           src={props.isOpen.src}
           alt={props.isOpen.title}
+          
         />
-
+ 
         <p className="popup-image__title">{props.isOpen.title}</p>
       </div>
     </div>
