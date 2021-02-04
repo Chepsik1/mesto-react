@@ -12,18 +12,16 @@ function PopupWithForm(props) {
         <h3 className={`${props.name}__title`}>{props.title}</h3>
         {props.children}
 
-        <button className="popup__save" id="popup-avatar-save" type="submit">
-          {props.btnSave}
-        </button>
+        <button className="popup__save" id="popup-avatar-save" type="submit" />
+        {props.btnSave}
       </form>
       <button
         type="button"
         className={`popup__close ${props.name}__close `}
         onClick={props.onClose}
-      ></button>
+      />
     </div>
   );
 }
 
 export default PopupWithForm;
-

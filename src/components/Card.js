@@ -6,7 +6,7 @@ function Card(props) {
 
   return (
     <div className="elements__element">
-      <button type="button" className="elements__element-trash"></button>
+      <button type="button" className="elements__element-trash"/>
       <img
         className="elements__element-image"
         src={props.src}
