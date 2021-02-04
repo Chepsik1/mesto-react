@@ -42,6 +42,8 @@ function App() {
     setIsEditAvatarPopupOpen(false);
   }
 
+
+  
   return (
     <div className="page">
       <Header />

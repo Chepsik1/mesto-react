@@ -12,8 +12,8 @@ function PopupWithForm(props) {
         <h3 className={`${props.name}__title`}>{props.title}</h3>
         {props.children}
 
-        <button className="popup__save" id="popup-avatar-save" type="submit" />
-        {props.btnSave}
+        <button className="popup__save" id="popup-avatar-save" type="submit" >
+        {props.btnSave}</button>
       </form>
       <button
         type="button"
