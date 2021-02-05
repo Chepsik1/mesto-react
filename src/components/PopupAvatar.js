@@ -3,6 +3,7 @@ import PopupWithForm from "./PopupWithForm";
 function PopupAvatar(props) {
   return (
     <PopupWithForm
+    closePopupWichFormClickOutContent ={ props.closePopupWichFormClickOutContent}
       name="popup-avatar"
       isOpen={props.isOpen ? "popup_opened" : ""}
       onClose={props.onClose}

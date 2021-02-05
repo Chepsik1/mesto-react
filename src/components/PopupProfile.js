@@ -4,6 +4,7 @@ function PopupProfile(props) {
   return (
     <PopupWithForm
       name="popup"
+      closePopupWichFormClickOutContent ={ props.closePopupWichFormClickOutContent}
       isOpen={props.isOpen ? "popup_opened" : ""}
       onClose={props.onClose}
       title="Редактировать профиль"

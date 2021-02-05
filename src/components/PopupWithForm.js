@@ -3,9 +3,11 @@ import React from "react";
 
 function PopupWithForm(props) {
   return (
-    <div className={`popup ${props.name} ${props.isOpen}`}>
+    <div   onClick ={ props.closePopupWichFormClickOutContent} className={`popup ${props.name} ${props.isOpen} `}>
+      
       <form
-        className={`${props.name}__conteiner`}
+    
+        className= {`${props.name}__conteiner`}
         name={`${props.name}__conteiner`}
         noValidate
       >

@@ -41,9 +41,24 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
   }
+//закрытие оверлей imagePopup
+  function closeImagePopupClickOutContent(e) {
+    if (e.target.closest('.popup-image__block') == null) {
+      closeAllPopups();
+    }
+  }
+//закрытие по оверлей popupWithForm
 
-
+function closePopupWichFormClickOutContent(e) {
+  if(e.target.closest('form') == null)
   
+  {
+    closeAllPopups();
+  }
+}
+
+
+
   return (
     <div className="page">
       <Header />
@@ -55,10 +70,10 @@ function App() {
       />
 
       <Footer />
-      <ImagePopup isOpen={selectedCard} onClose={closeAllPopups} />
-      <PopupAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} />
-      <PopupProfile isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} />
-      <PopupPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} />
+      <ImagePopup isOpen={selectedCard} onClose={closeAllPopups} closeImagePopupClickOutContent={closeImagePopupClickOutContent} />
+      <PopupAvatar isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} closePopupWichFormClickOutContent={closePopupWichFormClickOutContent} />
+      <PopupProfile isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} closePopupWichFormClickOutContent={closePopupWichFormClickOutContent} />
+      <PopupPlace isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} closePopupWichFormClickOutContent={closePopupWichFormClickOutContent}/>
     </div>
   );
 }
