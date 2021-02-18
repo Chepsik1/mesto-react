@@ -1,6 +1,42 @@
 import PopupWithForm from "./PopupWithForm";
+import React from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+
+
 
 function PopupProfile(props) {
+
+  const [name, setName] = React.useState(''); //стетй с именем
+  const [description, setDescription] = React.useState(''); //стейт с деятельностью
+  const currentUser = React.useContext(CurrentUserContext);
+
+  function handleChangeName(e) {
+    setName(e.target.value);
+  }
+  function handleChangeDescription(e) {
+    setDescription(e.target.value);
+  }
+ 
+
+// После загрузки текущего пользователя из API
+// его данные будут использованы в управляемых компонентах.
+React.useEffect(() => {
+  setName(currentUser.name);
+  setDescription(currentUser.about);
+}, [currentUser]); 
+
+function handleSubmit(e) {
+  // Запрещаем браузеру переходить по адресу формы
+  e.preventDefault();
+
+  // Передаём значения управляемых компонентов во внешний обработчик
+  props.onUpdateUser({
+    name: name,
+    about: description,
+  });
+}
+
+
   return (
     <PopupWithForm
       name="popup"
@@ -9,6 +45,7 @@ function PopupProfile(props) {
       onClose={props.onClose}
       title="Редактировать профиль"
       btnSave="сохранить"
+      onSubmit={handleSubmit}
     >
       <input
         className="popup__input"
@@ -18,8 +55,9 @@ function PopupProfile(props) {
         name="username"
         id="username"
         type="text"
-        defaultValue=""
+        onChange={handleChangeName}
         autoComplete="off"
+        defaultValue={name}
       />
       <input
         className="popup__input"
@@ -29,7 +67,8 @@ function PopupProfile(props) {
         name="occupation"
         id="occupation"
         type="text"
-        defaultValue=""
+        onChange={handleChangeDescription}
+        defaultValue={description}
       />
     </PopupWithForm>
    

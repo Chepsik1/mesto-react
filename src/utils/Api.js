@@ -1,8 +1,5 @@
 class Api {
-  constructor({
-    address,
-    token
-  }) {
+  constructor({ address, token }) {
     this._address = address;
     this._token = token;
   }
@@ -54,6 +51,7 @@ class Api {
   }
 
   addNewCard(info) {
+    console.log(info);
     return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {
@@ -75,7 +73,7 @@ class Api {
   }
 
   countLikeApi(info) {
-    return fetch(`${this._address}/cards/likes/${info._id}`, {
+    return fetch(`${this._address}/cards/likes/${info.id}`, {
       method: "PUT",
       headers: {
         authorization: this._token,
@@ -85,7 +83,7 @@ class Api {
   }
 
   deleteLike(info) {
-    return fetch(`${this._address}/cards/likes/${info._id}`, {
+    return fetch(`${this._address}/cards/likes/${info.id}`, {
       method: "DELETE",
       headers: {
         authorization: this._token,
