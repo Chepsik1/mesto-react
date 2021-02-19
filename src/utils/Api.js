@@ -81,6 +81,7 @@ class Api {
       },
     }).then((res) => this._getResponse(res));
   }
+  
 
   deleteLike(info) {
     return fetch(`${this._address}/cards/likes/${info.id}`, {
