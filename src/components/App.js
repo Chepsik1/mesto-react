@@ -4,11 +4,11 @@ import "../components/Header";
 import Header from "../components/Header";
 import Main from "../components/Main";
 import Footer from "../components/Footer";
-import PopupProfile from "../components/PopupProfile";
-import PopupAvatar from "./PopupAvatar";
-import PopupPlace from "./PopupPlace";
+import PopupProfile from "./EditProfilePopup";
+import PopupAvatar from "./EditAvatarPopup";
+import PopupPlace from "./AddPlacePopup";
 import ImagePopup from "./ImagePopup";
-import api from "../utils/Api.js";
+import api from "../utils/api.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function App() {
