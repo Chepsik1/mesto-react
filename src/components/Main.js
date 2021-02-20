@@ -35,9 +35,16 @@ function Main(props) {
       </section>
       <section className="elements">
         {props.cards.map((item) => (
+          
           <Card
+          {...item}
             key={item._id}
-            {...item}
+            id={item._id}
+            link= {item.link}
+            name= {item.name}
+            likes= {item.likes}
+            owner= {item.owner}
+            
             onCardClick={props.onCardClick}
             onCardLike={props.handleCardLike}
             onCardDelete={props.handleCardDelete}

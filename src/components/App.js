@@ -43,23 +43,12 @@ function App() {
       });
   }
 
-  React.useEffect((cards) => {
+  React.useEffect(() => {
     api
-      .getCards(cards)
+      .getCards()
       .then((response) => {
-        const cards = response.map((item) => {
-          return {
-            key: item._id,
-            id: item._id,
-            link: item.link,
-            name: item.name,
-            likes: item.likes,
-            owner: item.owner,
-          };
-        });
-
-        setCards(cards);
-      })
+          setCards(response);
+           })
       .catch((error) => {
         console.log(`Возникла ошибка: ${error}`);
       });
@@ -68,26 +57,37 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     if (!isLiked) {
-      api.countLikeApi(card).then((newCard) => {
+      api.countLikeApi(card)
+      .then((newCard) => {
         const newCards = cards.map((item) =>
-          item.id === card.id ? newCard : item
+          item._id === card._id ? newCard : item
         );
         setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(`Возникла ошибка: ${error}`);
       });
     } else {
-      api.deleteLike(card).then((newCard) => {
+      api.deleteLike(card)
+      .then((newCard) => {
         const newCards = cards.map((item) =>
-          item.id === card.id ? newCard : item
+          item._id === card._id ? newCard : item
         );
         setCards(newCards);
+      })
+      .catch((error) => {
+        console.log(`Возникла ошибка: ${error}`);
       });
     }
   }
 
   function handleCardDelete(card) {
     api.deleteCard(card.id).then(() => {
-      const cardDel = cards.filter((item) => item.id !== card.id);
+      const cardDel = cards.filter((item) => item._id !== card._id);
       setCards(cardDel);
+    })
+    .catch((error) => {
+      console.log(`Возникла ошибка: ${error}`);
     });
   }
 
@@ -106,9 +106,9 @@ function App() {
     api
       .addNewCard(data)
       .then((newCard) => {
-        setCards([...cards, newCard]);
+        setCards([newCard,...cards]);
         closeAllPopups();
-        console.log(newCard);
+     
       })
       .catch((err) => {
         console.log(`Возникла ошибка: ${err}`);
@@ -185,6 +185,7 @@ function App() {
         />
         <PopupPlace
           isOpen={isAddPlacePopupOpen}
+          
           onClose={closeAllPopups}
           closePopupWichFormClickOutContent={closePopupWichFormClickOutContent}
           onAddPlace={handleAddPlace}

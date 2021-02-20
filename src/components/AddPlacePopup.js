@@ -11,6 +11,7 @@ function PopupPlace(props) {
       name: inputName.current.value,
       link: inputLink.current.value,
     });
+    
   }
 
   return (
@@ -20,6 +21,7 @@ function PopupPlace(props) {
       }
       name="new-item-popup"
       isOpen={props.isOpen ? "popup_opened" : ""}
+      
       onClose={props.onClose}
       title="Новое место"
       btnSave="создать"

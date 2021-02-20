@@ -12,12 +12,12 @@ function ImagePopup(props) {
         />
         <img
           className="popup-image__foto"
-          src={props.isOpen.src}
-          alt={props.isOpen.title}
+          src={props.isOpen.link}
+          alt={props.isOpen.name}
           
         />
  
-        <p className="popup-image__title">{props.isOpen.title}</p>
+        <p className="popup-image__title">{props.isOpen.name}</p>
       </div>
     </div>
   );
