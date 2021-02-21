@@ -51,7 +51,7 @@ class Api {
   }
 
   addNewCard(info) {
-    console.log(info);
+   
     return fetch(`${this._address}/cards`, {
       method: "POST",
       headers: {

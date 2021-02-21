@@ -1,17 +1,27 @@
 import PopupWithForm from "./PopupWithForm";
 import React from "react";
 function PopupPlace(props) {
-  const inputName = React.useRef();
-  const inputLink = React.useRef();
+  const [inputName, setInputName] = React.useState("");
+  const [inputLink, setInputLink] = React.useState("");
 
+  const handleNameChange = (e) => {
+    setInputName({
+      value: e.target.value,
+    });
+  };
+
+  const handleLinkChange = (e) => {
+    setInputLink({
+      value: e.target.value,
+    });
+  };
   function handleSubmit(e) {
     e.preventDefault();
 
     props.onAddPlace({
-      name: inputName.current.value,
-      link: inputLink.current.value,
+      name: inputName.value,
+      link: inputLink.value,
     });
-    
   }
 
   return (
@@ -21,7 +31,6 @@ function PopupPlace(props) {
       }
       name="new-item-popup"
       isOpen={props.isOpen ? "popup_opened" : ""}
-      
       onClose={props.onClose}
       title="Новое место"
       btnSave="создать"
@@ -38,7 +47,7 @@ function PopupPlace(props) {
         defaultValue=""
         placeholder="Название"
         autoComplete="off"
-        ref={inputName}
+        onChange={handleNameChange}
       />
       {/* <span id="placename-error" className="error"></span> */}
       <input
@@ -50,7 +59,7 @@ function PopupPlace(props) {
         defaultValue=""
         placeholder="Ссылка на картинку"
         autoComplete="off"
-        ref={inputLink}
+        onChange={handleLinkChange}
       />
       {/* <span id="linkpicture-error" className="error"></span> */}
     </PopupWithForm>

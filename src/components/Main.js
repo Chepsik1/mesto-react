@@ -52,19 +52,7 @@ function Main(props) {
         ))}
       </section>
 
-      <div className="popup-del popup">
-        <form
-          className="popup-del__conteiner"
-          name="popup-del__conteiner"
-          noValidate
-        >
-          <h3 className="popup-del__title">Вы уверены?</h3>
-          <button className="popup__save" id="popup-del-save" type="submit">
-            Да
-          </button>
-        </form>
-        <button type="button" className=" popup__close popup-del__close" />
-      </div>
+      
     </main>
   );
 }
